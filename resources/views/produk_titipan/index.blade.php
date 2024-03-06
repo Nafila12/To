@@ -36,13 +36,12 @@
             <a href="{{ route('xl-pt') }}" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Export XSLX
             </a>
-            <a href="{{ route('xl-pdf') }}" class="btn btn-warning">
+            <a href="{{ route('xl-pdf') }}" class="btn btn-danger">
                 <i class="fas fa-file-pdf"></i> Export PDF
             </a>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#formImport">
-                            <i class="fas fa-cloud-upload"></i>Import
-                 </button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#formImport">
+                <i class="fas fa-cloud-upload"></i>Import
+            </button>
 
             <div class="mt-3">
                 @include('produk_titipan.data')
@@ -63,8 +62,8 @@
     $('.alert-danger').fadeTo(2000, 500).slideUp(500, function() {
         $('.alert-danger').slideUp(500)
     })
-    console.log($('.danger'))
-    $('.btn-danger').on('click', function(e) {
+    console.log($('.btn-danger'))
+    $('.delete-data').on('click', function(e) {
         console.log(e)
         e.preventDefault()
         const data = $(this).closest('tr').find('td:eq(1)').text()
@@ -82,38 +81,47 @@
             else swal.close()
         })
     })
-    $('#modalFormProdukTitipan').on('show.bs.modal', function(e) {
-        const btn = $(e.relatedTarget)
-        console.log(btn.data('mode'))
-        const mode = btn.data('mode')
-        const nama_produk = btn.data('nama_produk')
-        const nama_supplier = btn.data('nama_supplier')
-        const harga_beli = btn.data('harga_beli')
-        const harga_jual = btn.data('harga_jual')
-        const stok = btn.data('stok')
+    $(document).ready(function() {
+        // Fungsi untuk menghitung harga jual otomatis saat input harga beli diubah
+        $('#harga_beli').on('input', function() {
+            var hargaBeli = $(this).val();
+            var keuntungan = hargaBeli * 1.7;
+            var hargaJual = Math.ceil(keuntungan / 500) * 500;
+            $('#harga_jual').val(hargaJual);
+        });
+        $('#modalFormProdukTitipan').on('show.bs.modal', function(e) {
+            const btn = $(e.relatedTarget)
+            console.log(btn.data('mode'))
+            const mode = btn.data('mode')
+            const nama_produk = btn.data('nama_produk')
+            const nama_supplier = btn.data('nama_supplier')
+            const harga_beli = btn.data('harga_beli')
+            const harga_jual = btn.data('harga_jual')
+            const stok = btn.data('stok')
 
-        const id = btn.data('id')
-        const modal = $(this)
-        console.log($(this))
-        if (mode === 'edit') {
-            modal.find('.modal-title').text('Edit Data produk titipan')
-            modal.find('#nama_produk').val(nama_produk)
-            modal.find('#nama_supplier').val(nama_supplier)
-            modal.find('#harga_beli').val(harga_beli)
-            modal.find('#harga_jual').val(harga_jual)
-            modal.find('#stok').val(stok)
-            modal.find('form').attr('action', '{{ url("produk_titipan") }}/' + id)
-            modal.find('#method').html('@method("PATCH")')
-        } else {
-            modal.find('.modal-title').text('Input Data produk titipan')
-            modal.find('#nama_produk').val('')
-            modal.find('#nama_supplier').val('')
-            modal.find('#harga_beli').val('')
-            modal.find('#harga_jual').val('')
-            modal.find('#stok').val('')
-            modal.find('#method').html('')
-            modal.find('form').attr('action', '{{ url("produk_titipan") }}')
-        }
-    })
+            const id = btn.data('id')
+            const modal = $(this)
+            console.log($(this))
+            if (mode === 'edit') {
+                modal.find('.modal-title').text('Edit Data produk titipan')
+                modal.find('#nama_produk').val(nama_produk)
+                modal.find('#nama_supplier').val(nama_supplier)
+                modal.find('#harga_beli').val(harga_beli)
+                modal.find('#harga_jual').val(harga_jual)
+                modal.find('#stok').val(stok)
+                modal.find('form').attr('action', '{{ url("produk_titipan") }}/' + id)
+                modal.find('#method').html('@method("PATCH")')
+            } else {
+                modal.find('.modal-title').text('Input Data produk titipan')
+                modal.find('#nama_produk').val('')
+                modal.find('#nama_supplier').val('')
+                modal.find('#harga_beli').val('')
+                modal.find('#harga_jual').val('')
+                modal.find('#stok').val('')
+                modal.find('#method').html('')
+                modal.find('form').attr('action', '{{ url("produk_titipan") }}')
+            }
+        })
+    });
 </script>
 @endpush

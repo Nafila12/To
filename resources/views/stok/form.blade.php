@@ -10,17 +10,17 @@
                 <form method="post" action="stok" enctype="multipart/form-data">
                     @csrf
                     <div id="method"></div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label">Nama Menu</label>
+                    <div class="mb-3 row">
+                        <label for="jenis_id" class="col-sm-4 col-form-label">Nama Menu</label>
                         <div class="col-sm-8">
-                            <select class="form-select" name="menu_id" id="menu_id">
-                                <option value="" disabled>- Pilih -</option>
-                                @foreach ($menu as $p)
-                                    <option value="{{ $p->id }}">{{ $p->nama_menu }}</option>
+                            <select name="menu_id" id="menu_id" class="form-select">
+                                <option value="" selected disabled>Pilih Menu</option>
+                                @foreach ($menu as $j)
+                                    <option value="{{ $j->id }}">{{ $j->nama_menu }}</option>
                                 @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div>
 
                     <label for="jumlah" class="col-sm-4 col-form-label">jumlah</label>
                     <div class="col-sm-8">

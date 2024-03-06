@@ -10,11 +10,7 @@
                 <form method="post" action="Produk Titipan">
                     <div id="method"></div>
                     @csrf
-                    <label for="search_produk" class="col-sm-8 col-form-label">Cari Produk</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="search_produk" name='search_produk'>
-                    </div>
-
+                    
                     <label for="nama_produk" class="col-sm-8 col-form-label">Nama Produk</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="nama_produk" name='nama_produk'>
@@ -25,15 +21,12 @@
                         <input type="text" class="form-control" id="nama_supplier" name='nama_supplier'>
                     </div>
 
-                    <label for="harga_beli" class="col-sm-8 col-form-label">Harga Beli</label>
-                    <div class="col-sm-8">
-                        <input type="number" class="form-control" id="harga_beli" name='harga_beli'>
-                    </div>
-
-                    <label for="harga_jual" class="col-sm-8 col-form-label">Harga Jual</label>
-                    <div class="col-sm-8">
-                        <input type="number" class="form-control" id="harga_jual" name='harga_jual'>
-                    </div>
+                    <label for="staticEmail" class="col-sm-4 col-form-label">Harga Beli</label>
+                    <input type="number" class="form-control" id="harga_beli" placeholder="harga_beli"
+                        name="harga_beli" oninput="hitungHargaJual()">
+                    <label for="staticEmail" class="col-sm-4 col-form-label">Harga Jual</label>
+                    <input type="number" class="form-control" id="harga_jual" placeholder="harga_jual"
+                        name="harga_jual" readonly>
 
                     <label for="stok" class="col-sm-8 col-form-label">Stok</label>
                     <div class="col-sm-8">
@@ -49,7 +42,18 @@
         </div>
     </div>
 </div>
+<script>
+    function hitungHargaJual() {
+        var hargaBeli = parseFloat(document.getElementById('harga_beli').value);
+        var keuntungan = hargaBeli * 1.7;
+        var hargaJual = Math.ceil(keuntungan / 500) * 500;
+        document.getElementById('harga_jual').value = hargaJual.toFixed(2);
+    }
+</script>
 
+
+
+{{-- modal untuk import --}}
 <div class="modal fade" id="formImport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -76,6 +80,6 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 </div>

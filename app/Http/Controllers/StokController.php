@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\stok;
 use App\Http\Requests\StorestokRequest;
 use App\Http\Requests\UpdatestokRequest;
+use App\Models\Menu;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,10 @@ class StokController extends Controller
      */
     public function index()
     {
-        $stok = Stok::all();
+        $stok = stok::all();
         try {
-            $data['stok'] = Stok::orderBy('created_at', 'DESC')->get();
+            $data['stok'] = stok::orderBy('created_at', 'DESC')->get();
+            $data['menu'] = Menu::get();
 
             return view('stok.index')->with($data);
         } catch (QueryException | Exception | PDOException $error) {

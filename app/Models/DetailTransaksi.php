@@ -11,11 +11,12 @@ class DetailTransaksi extends Model
     protected $table = 'detail_transaksi';
     protected $guarded = [''];
 
-    public function transaksi(){
+    public function transaksi()
+    {
         return $this->belongsTo(Transaksi::class, 'transaksi_id');
- }
-    public function menu(){
-        return $this->hasOne(Menu::class, 'id','menu_id');
- }
-    
+    }
+    public function menu()
+    {
+        return $this->hasOne(Menu::class, 'id', 'menu_id');
+    }
 }

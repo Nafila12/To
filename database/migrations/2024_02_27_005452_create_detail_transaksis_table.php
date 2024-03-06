@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('detail_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('transaksi_id');
-            $table->unsignedBigInteger('menu_id');
+            $table->string('transaksi_id');
+            $table->string('menu_id');
             $table->string('jumlah');
             $table->string('subtotal');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -9,7 +9,7 @@ use App\Http\Requests\UpdateProdukTitipanRequest;
 use App\Imports\ProdukTitipanImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Maatwebsite\Excel\Facades\Excel;
 use PDOException;
@@ -44,9 +44,19 @@ class ProdukTitipanController extends Controller
      */
     public function store(StoreProdukTitipanRequest $request)
     {
-        ProdukTitipan::create($request->all());
+        $data = $request->all();
+        $data['harga_jual'] = $this->hitungHargaJual($request->input('harga_beli'));
 
-        return redirect('produk_titipan')->with('success', 'Data ProdukTitipan berhasil ditambahkan!');
+        ProdukTitipan::create($data);
+        return redirect('produk_titipan')->with('success', 'Data Produk Titipan berhasil di tambahkan!');
+    }
+
+
+    private function hitungHargaJual($hargaBeli)
+    {
+        $keuntungan = $hargaBeli * 1.7;
+        $hargaJual = ceil($keuntungan / 500) * 500;
+        return $hargaJual;
     }
 
     /**
@@ -68,10 +78,36 @@ class ProdukTitipanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdukTitipanRequest $request, ProdukTitipan $produkTitipan)
+    public function update(UpdateProdukTitipanRequest $request, string $id)
     {
-        $produkTitipan->update($request->all());
-        return redirect('produk_titipan')->with('success', 'Update data berhasil!');
+        $data = $request->all();
+        $data['harga_jual'] = $this->hitungHargaJual($request->input('harga_beli'));
+
+        ProdukTitipan::find($id)->update($data);
+        return redirect('produk_titipan')->with('success', 'Update data berhasil');
+    }
+
+    public function updateStok(Request $request, $id)
+    {
+        // Validasi request
+        $request->validate([
+            'stok' => 'required|numeric'
+        ]);
+
+        try {
+            // Cari produk berdasarkan ID
+            $product = ProdukTitipan::findOrFail($id);
+
+            // Update stok produk
+            $product->stok = $request->stok;
+            $product->save();
+
+            // Redirect kembali ke halaman produk dengan pesan sukses
+            return redirect('produk_titipan')->with('success', 'Stok produk berhasil diperbarui');
+        } catch (\Throwable $th) {
+            // Jika terjadi kesalahan, redirect dengan pesan kesalahan
+            return redirect('produk_titipan')->with('error', 'Gagal memperbarui stok produk');
+        }
     }
 
     /**
@@ -96,9 +132,9 @@ class ProdukTitipanController extends Controller
         return Excel::download(new ProdukTitipanExport, $date . 'produk_titipan.xlsx');
     }
 
-    public function importData( Request $request)
+    public function importData(Request $request)
     {
         Excel::import(new ProdukTitipanImport, $request->import);
-        return redirect()->back()->with('success', 'Import produk titipan berhasil');
+        return redirect()->back()->with('success', 'Import data jenis berhasil');
     }
 }

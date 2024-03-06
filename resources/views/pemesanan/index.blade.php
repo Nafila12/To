@@ -3,181 +3,178 @@
 @push('style')
 @endpush
 @section('content')
-<section class="content">
-    <main id="main" class="main">
-        <div class="c">
-            <div class="pagetitle">
-                <h1>Pemesanan</h1>
+    <section class="content">
+        <main id="main" class="main">
+            <div class="c">
+                <div class="pagetitle">
+                    <h1>Pemesanan</h1>
 
-            </div><!-- End Page Title -->
+                </div><!-- End Page Title -->
 
-            <div class="container">
-                {{-- <div class="item header">Header</div> --}}
-                <div class="item">
-                    <ul class="menu-container">
-                        @foreach ($jenis as $j)
-                        <li>
+                <div class="container">
+                    {{-- <div class="item header">Header</div> --}}
+                    <div class="item">
+                        <ul class="menu-container">
+                            @foreach ($jenis as $j)
+                                <li>
 
-                            <h3>{{ $j->nama_jenis }}</h3>
-                            <ul class="menu-item" style="cursor: pointer;">
-                                @foreach ($j->menu as $menu)
-                                
-                                <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}">
-                                    <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
-                                    Nama : {{ $menu->nama_menu }}
-                                    <br>
-                                    Deskripsi : {{ $menu->deskripsi}}
+                                    <h3>{{ $j->nama_jenis }}</h3>
+                                    <ul class="menu-item" style="cursor: pointer;">
+                                        @foreach ($j->menu as $menu)
+                                            <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}">
+                                                <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}"
+                                                    alt="">
+                                                Nama : {{ $menu->nama_menu }}
+                                                <br>
+                                                Deskripsi : {{ $menu->deskripsi }}
 
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </li>
+                            @endforeach
+                        </ul>
+                    </div>
 
-                                @endforeach
-                            </ul>
-                        </li>
-                        @endforeach
-                    </ul>
                 </div>
-
             </div>
-        </div>
-        <div class="item content">
-            <h3>Order</h3>
-            <ul class="ordered-list">
+            <div class="item content">
+                <h3>Order</h3>
+                <ul class="ordered-list">
 
-            </ul>
-            Total Bayar : <h2 id="total"> 0</h2>
-            <div>
-                <button id="btn-bayar">Bayar</button>
+                </ul>
+                Total Bayar : <h2 id="total"> 0</h2>
+                <div>
+                    <button id="btn-bayar">Bayar</button>
+                </div>
             </div>
-        </div>
-        <!-- /.card-footer-->
-        </div>
-        <!-- /.card -->
-    </main><!-- End #main -->
-</section>
+            <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+        </main><!-- End #main -->
+    </section>
 @endsection
 
 @push('scripts')
-<script>
-    $(function() {
-        // Inisialisasi
-        const orderedList = [];
-        let total = 0;
+    <script>
+        $(function() {
+            // Inisialisasi
+            const orderedList = [];
+            let total = 0;
 
-        const sum = () => {
-            return orderedList.reduce((accumulator, object) => {
-                return accumulator + (object.harga * object.qty);
-            }, 0);
-        };
+            const sum = () => {
+                return orderedList.reduce((accumulator, object) => {
+                    return accumulator + (object.harga * object.qty);
+                }, 0);
+            };
 
-        const changeQty = (el, inc) => {
-            // Ubah di array
-            const id = $(el).closest('li')[0].dataset.id;
-            const index = orderedList.findIndex(list => list.id == id);
-            orderedList[index].qty += orderedList[index].qty == 1 && inc == -1 ? 0 : inc;
+            const changeQty = (id, inc) => {
+                // Ubah di array
+                const index = orderedList.findIndex(list => list.menu_id == id);
+                orderedList[index].qty += inc;
 
-            // Ubah qty dan ubah subtotal
-            const txt_subtotal = $(el).closest('li').find('.subtotal')[0];
-            const txt_qty = $(el).closest('li').find('.qty-item')[0];
-            txt_qty.value = parseInt(txt_qty.value) == 1 && inc == -1 ? 1 : parseInt(txt_qty.value) + inc;
-            txt_subtotal.innerHTML = orderedList[index].harga * orderedList[index].qty;
+                // Ubah qty dan ubah subtotal
+                const item = $(`.ordered-list li[data-id="${id}"]`);
+                const txt_subtotal = item.find('.subtotal');
+                const txt_qty = item.find('.qty-item');
+                txt_qty.val(parseInt(txt_qty.val()) + inc);
+                txt_subtotal.text(orderedList[index].harga * orderedList[index].qty);
 
-            // Ubah jumlah total
-            $('#total').html(sum());
-        };
+                // Ubah jumlah total
+                $('#total').html(sum());
+            };
 
-        // Events
-        $('.ordered-list').on('click', '.btn-dec', function() {
-            changeQty(this, -1);
-        });
+            // Events
+            $('.ordered-list').on('click', '.btn-dec', function() {
+                const id = $(this).closest('li').data('id');
+                changeQty(id, -1);
+            });
 
-        $('.ordered-list').on('click', '.btn-inc', function() {
-            changeQty(this, 1); // Perbaiki parameter di sini
-        });
+            $('.ordered-list').on('click', '.btn-inc', function() {
+                const id = $(this).closest('li').data('id');
+                changeQty(id, 1);
+            });
 
-        $('.ordered-list').on('click', '.remove-item', function() {
-            const item = $(this).closest('li')[0];
-            let index = orderedList.findIndex(list => list.id == parseInt(item.dataset.id));
-            orderedList.splice(index, 1);
-            $(this).closest('li').remove(); // Perbaiki pemanggilan remove
-            $('#total').html(sum());
-        });
+            $('.ordered-list').on('click', '.remove-item', function() {
+                const id = $(this).closest('li').data('id');
+                const index = orderedList.findIndex(list => list.menu_id == id);
+                orderedList.splice(index, 1);
+                $(this).closest('li').remove();
+                $('#total').html(sum());
+            });
 
-        $('#btn-bayar').on('click', function() {
-            $.ajax({
-                url: "{{ route('transaksi.store') }}",
-                method: "POST",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "orderedList": orderedList,
-                    "total": sum()
-                },
-                success: function(data) {
-                    console.log(data)
-                    console.log('oke')
-                    if (data.status) {
-                        Swal.fire({
-                            title: data.message,
-                            showDenyButton: true,
-                            confirmButtonText: "Cetak Nota",
-                            denyButtonText: `OK`,
-                            showCloseButton: true
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.open("{{ url('nota') }}/" + data.notrans);
-                                location.reload();
-                            } else if (result.isDenied) {
-                                location.reload();
-                            }
-                        });
-                    } else {
-                        Swal.fire('Pemesanan Gagal!', '', 'error');
+            $('#btn-bayar').on('click', function() {
+                $.ajax({
+                    url: "{{ route('transaksi.store') }}",
+                    method: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "orderedList": orderedList,
+                        "total": sum()
+                    },
+                    success: function(data) {
+                        console.log(data)
+                        console.log('oke')
+                        if (data.status) {
+                            Swal.fire({
+                                title: data.message,
+                                showDenyButton: true,
+                                confirmButtonText: "Cetak Nota",
+                                denyButtonText: `OK`,
+                                showCloseButton: true
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.open("{{ url('nota') }}/" + data.notrans);
+                                    location.reload();
+                                } else if (result.isDenied) {
+                                    location.reload();
+                                }
+                            });
+                        } else {
+                            Swal.fire('Pemesanan Gagal!', '', 'error');
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        Swal.fire('Pemesanan tidak masuk!', '', 'error');
                     }
-                },
-                error: function(error) {
-                    console.log(error);
-                    Swal.fire('Pemesanan tidak masuk!', '', 'error');
+                });
+            });
+
+            $(".menu-item li").click(function() {
+                // Mengambil data
+                const menu_clicked = $(this).text();
+                const data = $(this)[0].dataset;
+                const harga = parseFloat(data.harga);
+                const id = parseInt(data.id);
+
+                if (orderedList.every(list => list.menu_id !== id)) {
+                    let dataN = {
+                        'menu_id': id,
+                        'menu': menu_clicked,
+                        'harga': harga,
+                        'qty': 1,
+                    };
+                    orderedList.push(dataN);
+                    let listOrder = `<li data-id="${id}"><h3>${menu_clicked}</h3>`;
+                    listOrder += `Sub Total : Rp. ${harga}`;
+                    listOrder += `<button class='remove-item'>hapus</button>
+                   <button class="btn-dec"> - </button>`;
+                    listOrder += `<input class="qty-item"
+                              type="number"
+                              value="1"
+                              style="width:40px"
+                              readonly
+                          />
+                          <button class="btn-inc">+</button><h2>
+                          <span class="subtotal">${harga * 1}</span>
+                      </li>`;
+                    $('.ordered-list').append(listOrder);
                 }
+                $('#total').html(sum());
             });
         });
-
-
-        $(".menu-item li").click(function() {
-            // Mengambil data
-            const menu_clicked = $(this).text();
-            const data = $(this)[0].dataset;
-            const harga = parseFloat(data.harga);
-            const id = parseInt(data.id);
-
-            if (orderedList.every(list => list.id !== id)) {
-                let dataN = {
-                    'menu_id': id,
-                    'menu': menu_clicked,
-                    'harga': harga,
-                    'qty': 1,
-                    // 'image': imageUrl
-                };
-                orderedList.push(dataN);
-                let listOrder = `<li data-id="${id}"><h3>${menu_clicked}</h3>`;
-                listOrder += `Sub Total : Rp. ${harga}`;
-                // listOrder +=
-                //         // `<img src="${imageUrl}" alt="${menu_clicked}" class="ordered-item-image">`;
-                listOrder += `<button class='remove-item'>hapus</button>
-                           <button class="btn-dec"> - </button>`;
-                listOrder += `<input class="qty-item"
-                                  type="number"
-                                  value="1"
-                                  style="width:40px"
-                                  readonly
-                              />
-                              <button class="btn-inc">+</button><h2>
-                              <span class="subtotal">${harga * 1}</span>
-                          </li>`;
-                $('.ordered-list').append(listOrder);
-            }
-            $('#total').html(sum());
-        });
-    });
-</script>
+    </script>
 @endpush
 <style>
     .ordered-item-container {
@@ -354,7 +351,6 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         transition: all 0.3s ease;
-
     }
 
     li {

@@ -47,9 +47,9 @@ Route::get('generate/produk_titipan', [ProdukTitipanController::class, 'generate
 Route::post('kategory/import/kategory', [KategoryController::class, 'importData'])->name('kategory');
 
 Route::group(['middleware' => 'auth'], function () {
-    
+
     Route::get('/', [HomeController::class, 'home']);
-    
+
     Route::group(['middleware' => ['cekUserLogin:1']], function () {
         Route::resource('jenis', JenisController::class);
         Route::post('jenis/import', [JenisController::class, 'importData'])->name('import-jenis');
@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('stok', StokController::class);
         Route::resource('produk_titipan', ProdukTitipanController::class);
         Route::post('produk_titipan/import', [ProdukTitipanController::class, 'importData'])->name('import-produk_titipan');
+        Route::post('/produk_titipan/{id}/update-stok', [ProdukTitipanController::class, 'updateStok'])->name('produk_titipan.update-stok');
         Route::resource('pelanggan', PelangganController::class);
         Route::resource('about', AboutController::class);
     });
