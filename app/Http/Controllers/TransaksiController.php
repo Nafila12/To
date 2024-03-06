@@ -39,17 +39,17 @@ class TransaksiController extends Controller
         try {
             DB::beginTransaction();
 
-              // Menghitung nomor transaksi baru
-              $last_id = Transaksi::whereDate('tanggal', today())->latest()->first();
-              $last_id_number = $last_id ? substr($last_id->id, 8) : 0;
-              $notrans = today()->format('Ymd') . str_pad($last_id_number + 1, 4, '0', STR_PAD_LEFT);
+            // Menghitung nomor transaksi baru
+            $last_id = Transaksi::whereDate('tanggal', today())->latest()->first();
+            $last_id_number = $last_id ? substr($last_id->id, 8) : 0;
+            $notrans = today()->format('Ymd') . str_pad($last_id_number + 1, 4, '0', STR_PAD_LEFT);
 
             // Membuat transaksi baru
             $transaksi = Transaksi::create([
                 'id' => $notrans,
                 'tanggal' => today(),
                 'total_harga' => $request->total,
-                'metode_pembayaran' => 'debit', // Metode pembayaran default, bisa disesuaikan
+                'metode_pembayaran' => 'cash', // Metode pembayaran default, bisa disesuaikan
                 'keterangan' => '' // Keterangan default, bisa disesuaikan
             ]);
 
@@ -64,7 +64,7 @@ class TransaksiController extends Controller
                     'jumlah' => $detail['qty'],
                     'subtotal' => $detail['harga'] * $detail['qty']
                 ]);
-}
+            }
 
             DB::commit();
 

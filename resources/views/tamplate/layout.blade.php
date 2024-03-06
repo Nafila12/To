@@ -153,6 +153,13 @@
                     <i class="menu-icon fas fa-clipboard"></i>
                     <div data-i18n="Dashboards">Menu</div>
                 </a>
+
+                <!-- meja -->
+            <li class="menu-item">
+                <a href="{{ url('/meja') }}" class="menu-link">
+                    <i class="menu-icon fas fa-clipboard"></i>
+                    <div data-i18n="Dashboards">meja</div>
+                </a>
             </li>
             <!-- produk titipan -->
             <li class="menu-item">

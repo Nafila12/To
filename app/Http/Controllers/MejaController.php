@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MejaExport;
 use App\Models\Meja;
 use App\Http\Requests\StoreMejaRequest;
 use App\Http\Requests\UpdateMejaRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Database\QueryException;
+use Maatwebsite\Excel\Facades\Excel;
 use PDOException;
 
 class MejaController extends Controller
@@ -76,5 +79,17 @@ class MejaController extends Controller
     {
         $meja->delete();
         return redirect('meja')->with('success', 'Data meja berhasil dihapus!');
+    }
+    public function generatepdf()
+    {
+        $meja = Meja::all();
+        $pdf = Pdf::loadView('meja.data', compact('meja'));
+        return $pdf->download('meja.pdf');
+    }
+    
+    public function exportData()
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new MejaExport, $date . 'meja.xlsx');
     }
 }

@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Meja</h3>
-           
+
         </div>
         <div class="card-body">
             @if (session('success'))
@@ -33,6 +33,12 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormMeja">
                 Tambah Pesanan Meja
             </button>
+            <a href="{{ route('pd-meja') }}" class="btn btn-danger">
+                <i class="fas fa-file-pdf"></i> Export PDF
+            </a>
+            <a href="{{ route('xl-meja') }}" class="btn btn-success">
+                <i class="fas fa-file-excel"></i> Export Excel
+            </a>
             <div class="mt-3">
                 @include('meja.data')
             </div>
@@ -53,7 +59,7 @@
         $('.alert-danger').slideUp(500)
     })
     console.log($('.btn-danger'))
-    $('.btn-danger').on('click', function(e) {
+    $('.delete-data').on('click', function(e) {
         console.log(e)
         e.preventDefault()
         const data = $(this).closest('tr').find('td:eq(1)').text()

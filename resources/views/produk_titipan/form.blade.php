@@ -6,6 +6,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Produk Titipan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            
             <div class="modal-body">
                 <form method="post" action="Produk Titipan">
                     <div id="method"></div>
@@ -49,6 +51,7 @@
         var hargaJual = Math.ceil(keuntungan / 500) * 500;
         document.getElementById('harga_jual').value = hargaJual.toFixed(2);
     }
+
 </script>
 
 

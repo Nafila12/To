@@ -22,15 +22,19 @@
                         </div>
                     </div>
 
-                    <label for="jumlah" class="col-sm-4 col-form-label">jumlah</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="jumlah" name='jumlah'>
+                    <div class="mb-3 row">
+                        <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="jumlah" name='jumlah'>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
+                </form> <!-- Menutup tag form di sini -->
             </div>
         </div>
     </div>
+</div>

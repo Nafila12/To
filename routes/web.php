@@ -23,9 +23,9 @@ use App\Policies\PemesananPolicy;
 Route::post('/login/cek', [UserController::class, 'cekLogin'])->name('cekLogin');
 Route::get('/login', [UserController::class, 'index',])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-// Route::resource('karyawan', KaryawanController::class);
-// Route::resource('kategory', KategoryController::class);
-// Route::resource('meja', MejaController::class);
+Route::resource('karyawan', KaryawanController::class);
+Route::resource('kategory', KategoryController::class);
+Route::resource('meja', MejaController::class);
 
 
 //excel
@@ -35,6 +35,7 @@ Route::get('export/jenis', [JenisController::class, 'exportData'])->name('nama')
 Route::get('export/menu', [MenuController::class, 'exportData'])->name('tidak');
 Route::get('export/pelanggan', [PelangganController::class, 'exportData'])->name('dd');
 Route::get('export/produk_titipan', [ProdukTitipanController::class, 'exportData'])->name('xl-pt');
+Route::get('export/meja', [MejaController::class, 'exportData'])->name('xl-meja');
 
 //pdf
 Route::get('generate/kategori', [KategoryController::class, 'generatepdf'])->name('tilek');
@@ -42,6 +43,7 @@ Route::get('generate/jenis', [JenisController::class, 'generatepdf'])->name('din
 Route::get('generate/menu', [MenuController::class, 'generatepdf'])->name('aku');
 Route::get('generate/pelanggan', [PelangganController::class, 'generatepdf'])->name('ss');
 Route::get('generate/produk_titipan', [ProdukTitipanController::class, 'generatepdf'])->name('xl-pdf');
+Route::get('generate/meja', [MejaController::class, 'generatepdf'])->name('pd-meja');
 // Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
 
 Route::post('kategory/import/kategory', [KategoryController::class, 'importData'])->name('kategory');
