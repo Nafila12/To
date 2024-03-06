@@ -7,6 +7,8 @@
             <th scope="col">Harga</th>
             <th scope="col">Image</th>
             <th scope="col">Deskripsi</th>
+            <th scope="col">Action</th>
+
         </tr>
     </thead>
     <tbody>
