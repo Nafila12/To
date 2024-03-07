@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Indomart</title>
+    <title>S A P I SPY</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,13 +55,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>  S A P I</h2>
+            <h2> S A P I SPY</h2>
             <h5>Jalan Setia budi NO.5</h5>
             <hr>
             <h5>No. Faktur : {{ $transaksi->id }}</h5>
             <h5>{{ $transaksi->tanggal }}</h5>
+            <h5>Kasir : fila</h5>
         </div>
-
+        
         <div class="info">
             <h4>Detail Transaksi:</h4>
             @foreach ($transaksi->DetailTransaksi as $item)
