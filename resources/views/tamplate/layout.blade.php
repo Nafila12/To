@@ -173,9 +173,7 @@
                     <i class="menu-icon fas fa-box"></i>
                     <div data-i18n="Dashboards">Stok</div>
                 </a>
-
             </li>
-
             <!-- pelanggan -->
             <li class="menu-item">
                 <a href="{{ url('/pelanggan') }}" class="menu-link">

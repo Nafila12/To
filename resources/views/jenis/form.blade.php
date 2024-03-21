@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="category">
+                <form method="post" action="jenis.store">
                     @csrf
                     <div class="mb-3">
                         <label for="nama_jenis" class="col-form-label">Nama Jenis</label>
