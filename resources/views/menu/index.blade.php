@@ -39,7 +39,7 @@
             <a href="{{ route('aku') }}" class="btn btn-danger">
                 <i class="fas fa-file-pdf"></i> Export PDF
             </a>
-            
+
             <!-- Button trigger modal -->
             <!-- Button trigger modal -->
             <div class="mt-3">
@@ -81,36 +81,37 @@
         })
     })
     $('#modalFormMenu').on('show.bs.modal', function(e) {
-        const btn = $(e.relatedTarget)
-        console.log(btn.data('mode'))
-        const mode = btn.data('mode')
-        const jenis_id = btn.data('jenis_id')
-        const nama_menu = btn.data('nama_menu')
-        const harga = btn.data('harga')
-        const image = btn.data('image')
-        const deskripsi = btn.data('deskripsi')
-        const id = btn.data('id')
-        const modal = $(this)
-        console.log($(this))
-        if (mode === 'edit') {
-            modal.find('.modal-title').text('Edit Data menu')
-            modal.find('#jenis_id').val(jenis_id)
-            modal.find('#nama_menu').val(nama_menu)
-            modal.find('#harga').val(harga)
-            // modal.find('#image').val(image)
-            modal.find('#deskripsi').val(deskripsi)
-            modal.find('form').attr('action', '{{ url("menu") }}/' + id)
-            modal.find('#method').html('@method("PATCH")')
-        } else {
-            modal.find('.modal-title').text('Input Data menu')
-            modal.find('#jenis_id').val('')
-            modal.find('#nama_menu').val('')
-            modal.find('#harga').val('')
-            // modal.find('#image').val('')
-            modal.find('#deskripsi').val('')
-            modal.find('#method').html('')
-            modal.find('form').attr('action', '{{ url("menu") }}')
-        }
-    })
+                    const btn = $(e.relatedTarget)
+                    console.log(btn.data('mode'))
+                    const mode = btn.data('mode')
+                    const nama_menu = btn.data('nama_menu')
+                    const jenis_id = btn.data('jenis_id')
+                    const harga = btn.data('harga')
+                    const image = btn.data('image')
+                    const deskripsi = btn.data('deskripsi')
+                    const id = btn.data('id')
+                    const modal = $(this)
+                    if (mode === 'edit') {
+                        modal.find('.modal-title').text('Edit Data Menu')
+                        modal.find('#nama_menu').val(nama_menu)
+                        modal.find('#jenis_id').val(jenis_id)
+                        modal.find('#harga').val(harga)
+                        // modal.find('#image').val(image)
+                        modal.find('#deskripsi').val(deskripsi)
+                        modal.find('.modal-body form').attr('action', '{{ url("menu") }}/' + id)
+                        modal.find('#method').html('@method("PATCH")')
+                        console.log(nama_menu)
+
+                    } else {
+                        modal.find('.modal-title').text('Input Data Menu')
+                        modal.find('#nama_menu').val('')
+                        modal.find('#jenis_id').val('')
+                        modal.find('#harga').val('')
+                        // modal.find('#image').val('')
+                        modal.find('#deskripsi').val('')
+                        modal.find('#method').html('')
+                        modal.find('.modal-body form').attr('action', '{{ url("menu") }}')
+                    }
+                })
 </script>
 @endpush

@@ -25,7 +25,7 @@ Route::get('/login', [UserController::class, 'index',])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('karyawan', KaryawanController::class);
 Route::resource('kategory', KategoryController::class);
-Route::resource('meja', MejaController::class);
+// Route::resource('meja', MejaController::class);
 
 
 //excel
@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('jenis', JenisController::class);
         Route::post('jenis/import', [JenisController::class, 'importData'])->name('import-jenis');
         Route::resource('menu', MenuController::class);
+        Route::resource('meja', MejaController::class);
         Route::resource('stok', StokController::class);
         Route::resource('produk_titipan', ProdukTitipanController::class);
         Route::post('produk_titipan/import', [ProdukTitipanController::class, 'importData'])->name('import-produk_titipan');

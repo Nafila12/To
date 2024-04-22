@@ -8,6 +8,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="jenis.store">
+                <div id="method"></div>
                     @csrf
                     <div class="mb-3">
                         <label for="nama_jenis" class="col-form-label">Nama Jenis</label>

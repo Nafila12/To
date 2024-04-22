@@ -17,17 +17,19 @@
                         <ul class="menu-container">
                             @foreach ($jenis as $j)
                                 <li>
-
                                     <h3>{{ $j->nama_jenis }}</h3>
                                     <ul class="menu-item" style="cursor: pointer;">
                                         @foreach ($j->menu as $menu)
-                                            <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}">
+                                        <li data-stok="{{ $menu->stok->first()->jumlah < 1 ? 'pointer-events: none; opacity: .8' : '' }}"
+                                                data-harga="{{ $menu->harga }}"data-id="{{ $menu->id }}"
+                                                data-image="{{ $menu->image }}">
                                                 <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}"
                                                     alt="">
                                                 Nama : {{ $menu->nama_menu }}
                                                 <br>
                                                 Deskripsi : {{ $menu->deskripsi }}
-
+                                                <br>
+                                                Stok : {{$menu->stok->jumlah}}
                                             </li>
                                         @endforeach
                                     </ul>

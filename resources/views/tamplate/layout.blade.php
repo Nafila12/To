@@ -139,6 +139,14 @@
                 </a>
             </li>
 
+            <!-- about -->
+              <li class="menu-item">
+                <a href="{{ url('/about') }}" class="menu-link">
+                    <i class="menu-icon fas fa-trash"></i>
+                    <div data-i18n="Dashboards">About</div>
+                </a>
+            </li>
+
             <!-- jenis -->
             <li class="menu-item">
                 <a href="{{ url('/jenis') }}" class="menu-link">
@@ -155,12 +163,13 @@
                 </a>
 
                 <!-- meja -->
-            <li class="menu-item">
+             <li class="menu-item">
                 <a href="{{ url('/meja') }}" class="menu-link">
                     <i class="menu-icon fas fa-clipboard"></i>
                     <div data-i18n="Dashboards">meja</div>
                 </a>
-            </li>
+                
+            </li> 
             <!-- produk titipan -->
             <li class="menu-item">
                 <a href="{{ url('produk_titipan') }}" class="menu-link">
@@ -217,12 +226,7 @@
                 </a>
             </li>
 
-            <li class="menu-item">
-                <a href="{{ url('/about') }}" class="menu-link">
-                    <i class="menu-icon fas fa-trash"></i>
-                    <div data-i18n="Dashboards">About</div>
-                </a>
-            </li>
+          
 
 
         </ul>

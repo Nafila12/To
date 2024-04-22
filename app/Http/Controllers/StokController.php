@@ -20,7 +20,7 @@ class StokController extends Controller
     {
         $stok = stok::all();
         try {
-            $data['stok'] = stok::orderBy('created_at', 'DESC')->get();
+            $data['stok'] = stok::with(['menu'])->get();
             $data['menu'] = Menu::get();
 
             return view('stok.index')->with($data);
@@ -40,12 +40,36 @@ class StokController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStokRequest $request)
+public function store(StoreStokRequest $request)
     {
-        Stok::create($request->all());
+        {
+            $stok = stok::where('menu_id', $request->menu_id)->get()->first();
+            if (!$stok) {
+                stok::create($request->all());
+                return redirect('stok')->with('success', 'Data Stok berhasil di tambahkan!');
+            }
+            $stok->jumlah = (int)$stok->jumlah + (int)$request->jumlah;
+            $stok->save();
 
-        return redirect('stok')->with('success', 'Data Stok berhasil ditambahkan!');
+            return redirect('stok')->with('success', 'Data Stok berhasil di tambahkan!');
+        }
+        // stok::create($request->all());
+
+        // return redirect('stok')->with('success', 'Data Stok berhasil ditambahkan!');
     }
+//     public function store(StoreStokRequest $request)
+//     { {
+//             $stok = Stok::where('menu_id', $request->menu_id)->get()->first();
+//             if (!$stok) {
+//                 Stok::create($request->all());
+//                 return redirect('stok')->with('success', 'Data Stok berhasil di tambahkan!');
+//             }
+//             $stok->jumlah = (int)$stok->jumlah + (int)$request->jumlah;
+//             $stok->save();
+
+//             return redirect('stok')->with('success', 'Data Stok berhasil di tambahkan!');
+//         }
+// }
 
     /**
      * Display the specified resource.
