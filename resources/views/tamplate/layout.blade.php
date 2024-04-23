@@ -225,11 +225,26 @@
 
 
             @endif
+            <!-- contact -->
+            <li class="menu-item">
+                <a href="{{ url('/contac') }}" class="menu-link">
+                    <i class="menu-icon fas fa-trash"></i>
+                    <div data-i18n="Dashboards">Contact Us</div>
+                </a>
+            </li>
             <!-- Logout -->
             <li class="menu-item">
                 <a href="{{ url('/logout') }}" class="menu-link">
                     <i class="menu-icon fas fa-box"></i>
                     <div data-i18n="Dashboards">Logout</div>
+                </a>
+            </li>
+
+            <!-- //absen -->
+            <li class="menu-item">
+                <a href="{{ url('/absen') }}" class="menu-link">
+                    <i class="menu-icon fas fa-box"></i>
+                    <div data-i18n="Dashboards">Absen</div>
                 </a>
             </li>
 

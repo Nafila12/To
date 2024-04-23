@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\absensi;
-use App\Http\Requests\StoreabsensiRequest;
-use App\Http\Requests\UpdateabsensiRequest;
+use App\Models\contacUs;
+use App\Http\Requests\StorecontacUsRequest;
+use App\Http\Requests\UpdatecontacUsRequest;
 
-class AbsensiController extends Controller
+class ContacUsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('contac');
     }
 
     /**
@@ -27,7 +27,7 @@ class AbsensiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreabsensiRequest $request)
+    public function store(StorecontacUsRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class AbsensiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(absensi $absensi)
+    public function show(contacUs $contacUs)
     {
         //
     }
@@ -43,7 +43,7 @@ class AbsensiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(absensi $absensi)
+    public function edit(contacUs $contacUs)
     {
         //
     }
@@ -51,7 +51,7 @@ class AbsensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateabsensiRequest $request, absensi $absensi)
+    public function update(UpdatecontacUsRequest $request, contacUs $contacUs)
     {
         //
     }
@@ -59,7 +59,7 @@ class AbsensiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(absensi $absensi)
+    public function destroy(contacUs $contacUs)
     {
         //
     }

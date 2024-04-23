@@ -30,7 +30,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            //pengkondisian
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormMeja">
                 Tambah Pesanan Meja
             </button>
@@ -53,7 +52,6 @@
 @endsection
 
 @push('scripts')
-//stack memandakan script atau style//
 <script>
     $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
         $('.alert-success').slideUp(500)
@@ -91,7 +89,6 @@
         const modal = $(this)
         console.log($(this))
         if (mode === 'edit') { 
-            //jika mode edit maka menjalankan 
             modal.find('.modal-title').text('Edit Data Meja')
             modal.find('#nomor_meja').val(nomor_meja)
             modal.find('#kapasitas').val(kapasitas)

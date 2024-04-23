@@ -12,13 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('absensi', function (Blueprint $table) {
-            $table->string('id');
+        Schema::create('absen', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nama_karyawan');
             $table->date('tanggal_masuk');
-            $table->integer('waktu_masuk');
-            $table->integer('Status');
-            $table->integer('waktu_keluar');
+            $table->time('waktu_masuk');
+            $table->integer('status');
+            $table->time('waktu_keluar');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('absensis');
+        Schema::dropIfExists('absen');
     }
 };

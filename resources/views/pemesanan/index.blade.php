@@ -23,6 +23,7 @@
                             <ul class="menu-item" style="cursor: pointer;">
                                 @foreach ($j->menu as $menu)
                                 <li  style="cursor: pointer;"
+                                {{ $menu->stok->first()->jumlah < 1 ? 'pointer-events: none; opacity: .8' : '' }}
                                 data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">
                                     <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
                                     Nama : {{ $menu->nama_menu }}
