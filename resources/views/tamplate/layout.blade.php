@@ -140,10 +140,17 @@
             </li>
 
             <!-- about -->
-              <li class="menu-item">
+            <li class="menu-item">
                 <a href="{{ url('/about') }}" class="menu-link">
                     <i class="menu-icon fas fa-trash"></i>
                     <div data-i18n="Dashboards">About</div>
+                </a>
+            </li>
+            <!-- kategorai -->
+            <li class="menu-item">
+                <a href="{{ url('/kategory') }}" class="menu-link">
+                    <i class="menu-icon fas fa-trash"></i>
+                    <div data-i18n="Dashboards">kategory</div>
                 </a>
             </li>
 
