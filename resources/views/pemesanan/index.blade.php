@@ -22,14 +22,14 @@
                             <h3>{{ $j->nama_jenis }}</h3>
                             <ul class="menu-item" style="cursor: pointer;">
                                 @foreach ($j->menu as $menu)
-                                <li @if($menu->stok->first() == null || $menu->stok->first()->jumlah < 1) style="pointer-events: none; opacity: 0.8;" @endif data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">
-    <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
-    Nama : {{ $menu->nama_menu }}
-    <br>
-    Deskripsi : {{ $menu->deskripsi }}
-    <br>
-    Stok : {{ $menu->stok->first() != null ? $menu->stok->first()->jumlah : 'Tidak Tersedia' }}
-</li>
+                                <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">
+                                    <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
+                                    Nama : {{ $menu->nama_menu }}
+                                    <br>
+                                    Deskripsi : {{ $menu->deskripsi }}
+                                    <br>
+                                    Stok :
+                                </li>
 
                                 @endforeach
                             </ul>
