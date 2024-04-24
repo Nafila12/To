@@ -30,6 +30,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormMeja">
                 Tambah Pesanan Meja
             </button>
@@ -39,6 +40,9 @@
             <a href="{{ route('xl-meja') }}" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Export Excel
             </a>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImport">
+                <i class="fas fa-file-excel"></i> Import
+            </button>
             <div class="mt-3">
                 @include('meja.data')
             </div>
@@ -47,7 +51,8 @@
     </div>
 
     @include('meja.form')
-    //buat 
+    @include('meja.modal')
+   
 </section>
 @endsection
 

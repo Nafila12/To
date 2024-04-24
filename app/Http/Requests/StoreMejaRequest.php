@@ -22,17 +22,7 @@ class StoreMejaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nomor_meja' => 'required',
-            'kapasitas' => 'required',
-            'status' => 'required',
+//
         ]; 
-    }
-    public function messages()
-    {
-        return [
-            'nomor_meja.required' => 'Data Kategory belum diisi!',
-            'kapasitas.required' => 'Data Kategory belum diisi!',
-            'status.required' => 'Data Kategory belum diisi!'
-        ];
     }
 }

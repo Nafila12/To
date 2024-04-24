@@ -9,9 +9,10 @@ class stok extends Model
 {
     use HasFactory;
     protected $table = 'stok';
-    protected $fillable = ['menu_id','jumlah'];
+    protected $guarded = [''];
 
-    public function menu(){
-        return $this->belongsTo(Menu::class, 'menu_id','id');
-}
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id', 'id');
+    }
 }

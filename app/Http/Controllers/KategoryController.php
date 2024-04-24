@@ -10,6 +10,7 @@ use App\Imports\KategoryImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PDOException;
 
@@ -96,9 +97,8 @@ class KategoryController extends Controller
         return $pdf->download('kategory.pdf');
     }
 
-    public function importData(){
-        Excel::import(new KategoryImport, request()->file('import'));
-
-        return redirect(request()->segment(1).'/kategory')->with('success','Import Data Berhasil!!');
+    public function importData(Request $request){
+        Excel::import(new KategoryImport, $request->import);
+        return redirect()->back()->with('success', 'Import data category berhasil');
     }
 }

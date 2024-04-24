@@ -51,7 +51,8 @@ Route::get('generate/meja', [MejaController::class, 'generatepdf'])->name('pd-me
 Route::get('generate/absen', [AbsenController::class, 'generatepdf'])->name('pd-absen');
 // Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
 
-Route::post('kategory/import/kategory', [KategoryController::class, 'importData'])->name('kategory');
+Route::post('kategory/import', [KategoryController::class, 'importData'])->name('import-kategory');
+Route::post('meja/import', [MejaController::class, 'importData'])->name('import-meja');
 
 Route::group(['middleware' => 'auth'], function () {
 

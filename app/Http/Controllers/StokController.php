@@ -107,7 +107,7 @@ public function store(StoreStokRequest $request)
     {
         try {
             $stok->delete();
-            return redirect('/stoks')->with('success', 'Data berhasil dihapus!');
+            return redirect('/stok')->with('success', 'Data berhasil dihapus!');
         } catch (QueryException | Exception | PDOException $error) {
             $this->failResponse($error->getMessage(), $error->getCode());
         }

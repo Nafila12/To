@@ -39,6 +39,9 @@
             <a href="{{ route('aku') }}" class="btn btn-danger">
                 <i class="fas fa-file-pdf"></i> Export PDF
             </a>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalImport">
+                <i class="fas fa-file-excel"></i> Import
+            </button>
 
             <!-- Button trigger modal -->
             <!-- Button trigger modal -->

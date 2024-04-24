@@ -30,12 +30,10 @@
                                 <input type="time" class="form-control" id="waktu_masuk" name='waktu_masuk'>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="status" class="col-sm-4 col-form-label">Status</label>
-                            <div class="input-form">
-                                <input type="text" class="form-control" id="status" name='status'>
-                            </div>
-                        </div>
+                        <div class="mb-3>
+                        <label for="status" class="col-sm-4 col-form-label">Status</label>
+                      
+                </div>
                         <div class="mb-3">
                             <label for="waktu_keluar" class="col-sm-4 col-form-label">Waktu keluar</label>
                             <div class="input-form">

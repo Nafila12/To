@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_karyawan');
             $table->date('tanggal_masuk');
             $table->time('waktu_masuk');
-            $table->integer('status');
+            $table->enum('status', ['masuk', 'izin', 'sakit', 'cuti']);
             $table->time('waktu_keluar');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

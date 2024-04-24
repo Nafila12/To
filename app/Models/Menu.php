@@ -13,13 +13,11 @@ class Menu extends Model
 
     public function jenis()
     {
-        return $this->belongsTo(jenis::class,'jenis_id');
+        return $this->belongsTo(jenis::class, 'jenis_id');
     }
 
     public function stok()
     {
-        return $this->belongsTo(stok::class, 'id', 'menu_id');
+        return $this->hasMany(stok::class, 'id', 'menu_id');
+    }
 }
-}
-
-

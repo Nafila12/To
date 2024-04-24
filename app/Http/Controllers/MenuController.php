@@ -6,9 +6,11 @@ use App\Exports\MenuExport;
 use App\Models\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
+use App\Imports\MenuImport;
 use App\Models\jenis;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\QueryException;
 use Maatwebsite\Excel\Facades\Excel;
 use PDOException;
@@ -102,10 +104,8 @@ class MenuController extends Controller
         $pdf = Pdf::loadView('menu.data', compact('menu'));
         return $pdf->download('menu.pdf');
     }
-    // public function generatepdf()
-    // {
-    //     $kategory = kategory::all();
-    //     $pdf = Pdf::loadView('kategory.data', compact('kategory'));
-    //     return $pdf->download('kategory.pdf');
+    // public function importData(Request $request){
+    //     Excel::import(new MenuImport, $request->import);
+    //     return redirect()->back()->with('success', 'Import data Menu berhasil');
     // }
 }

@@ -9,5 +9,5 @@ class Meja extends Model
 {
     use HasFactory;
     protected $table = 'meja';
-    protected $fillable = ['nomor_meja','kapasitas','status'];
+    protected $guarded = [''];
 }
