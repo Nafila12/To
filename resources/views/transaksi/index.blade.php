@@ -28,9 +28,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormTransaksi">
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormTransaksi">
                 Tambah Transaksi
-            </button>
+            </button> -->
             <!-- Button trigger modal -->
             <div class="mt-3 p-4">
                 @include('transaksi.data')

@@ -1,4 +1,4 @@
-<table class="mt-2 table table-sm table-hover table-stripped table-bordered" id="tbl-pemesanan">
+<table class="mt-2 table table-sm table-hover table-stripped table-bordered" id="tbl-stok">
     <thead>
         <tr>
             <th scope="col">No</th>

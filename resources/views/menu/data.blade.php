@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th scope="col">NO</th>
-            <th scope="col">Jenis Id</th>
+            <th scope="col">Nama Jenis</th>
             <th scope="col">Nama Menu</th>
             <th scope="col">Harga</th>
             <th scope="col">Image</th>
@@ -15,7 +15,7 @@
         @foreach ($menu as $p)
         <tr>
             <th scope="row">{{ $i = !isset($i) ? 1 : ++$i }}</th>
-            <td>{{ $p->jenis_id}}</td>
+            <td>{{ $p->jenis->nama_jenis}}</td>
             <td>{{ $p->nama_menu }}</td>
             <td>{{ $p->harga }}</td>
             <td><img width="70px" src="{{ asset('images') }}/{{ $p->image }}" alt="" srcset=""></td>

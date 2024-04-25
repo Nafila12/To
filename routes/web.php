@@ -73,8 +73,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => ['cekUserLogin:2']], function () {
-        Route::resource('pemesanan', PemesananController::class);
         Route::resource('transaksi', TransaksiController::class);
+        Route::resource('pemesanan', PemesananController::class);
         Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
     });
 });

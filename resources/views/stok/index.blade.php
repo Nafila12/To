@@ -86,28 +86,27 @@
             })
         })
         $('#modalFormStok').on('show.bs.modal', function(e) {
-            const btn = $(e.relatedTarget)
-            console.log(btn.data('mode'))
-            const mode = btn.data('mode')
-            const menu_id = btn.data('menu_id')
-            const jumlah = btn.data('jumlah')
-
-            const id = btn.data('id')
-            const modal = $(this)
-            console.log($(this))
-            if (mode === 'edit') {
-                modal.find('.modal-title').text('Edit Data Stok')
-                modal.find('#menu_id').val(menu_id)
-                modal.find('#jumlah').val(jumlah)
-                modal.find('form').attr('action', '{{ url("stok") }}/' + id)
-                modal.find('#method').html('@method("PATCH")')
-            } else {
-                modal.find('.modal-title').text('Input Data stok')
-                modal.find('#menu_id').val('')
-                modal.find('#jumlah').val('')
-                modal.find('#method').html('')
-                modal.find('form').attr('action', '{{ url("stok") }}')
-            }
-        })
+        const btn = $(e.relatedTarget)
+        console.log(btn.data('mode'))
+        const mode = btn.data('mode')
+        const menu_id = btn.data('menu_id')
+        const jumlah = btn.data('jumlah')
+        const id = btn.data('id')
+        const modal = $(this)
+        console.log($(this))
+        if (mode === 'edit') {
+            modal.find('.modal-title').text('Edit Data Stok')
+            modal.find('#menu_id').val(menu_id)
+            modal.find('#jumlah').val(jumlah)
+            modal.find('form').attr('action', '{{ url("stok") }}/' + id)
+            modal.find('#method').html('@method("PATCH")')
+        } else {
+            modal.find('.modal-title').text('Input Data stok')
+            modal.find('#menu_id').val('')
+            modal.find('#jumlah').val('')
+            modal.find('#method').html('')
+            modal.find('form').attr('action', '{{ url("stok") }}')
+        }
+    })
     </script>
 @endpush

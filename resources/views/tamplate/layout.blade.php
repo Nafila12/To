@@ -146,13 +146,7 @@
                     <div data-i18n="Dashboards">About</div>
                 </a>
             </li>
-            <!-- kategorai -->
-            <li class="menu-item">
-                <a href="{{ url('/kategory') }}" class="menu-link">
-                    <i class="menu-icon fas fa-trash"></i>
-                    <div data-i18n="Dashboards">kategory</div>
-                </a>
-            </li>
+           
 
             <!-- jenis -->
             <li class="menu-item">
@@ -169,6 +163,13 @@
                     <div data-i18n="Dashboards">Menu</div>
                 </a>
 
+                <!-- stok -->
+                <li class="menu-item">
+                    <a href="{{ url('/stok') }}" class="menu-link">
+                        <i class="menu-icon fas fa-box"></i>
+                        <div data-i18n="Dashboards">Stok</div>
+                    </a>
+                </li>
                 <!-- meja -->
              <li class="menu-item">
                 <a href="{{ url('/meja') }}" class="menu-link">
@@ -176,6 +177,14 @@
                     <div data-i18n="Dashboards">meja</div>
                 </a>
                 
+                 <!-- kategorai -->
+            <li class="menu-item">
+                <a href="{{ url('/kategory') }}" class="menu-link">
+                    <i class="menu-icon fas fa-trash"></i>
+                    <div data-i18n="Dashboards">kategory</div>
+                </a>
+            </li>
+
             </li> 
             <!-- produk titipan -->
             <li class="menu-item">
@@ -184,12 +193,7 @@
                     <div data-i18n="Dashboards">Produk titipan</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="{{ url('/stok') }}" class="menu-link">
-                    <i class="menu-icon fas fa-box"></i>
-                    <div data-i18n="Dashboards">Stok</div>
-                </a>
-            </li>
+
             <!-- pelanggan -->
             <li class="menu-item">
                 <a href="{{ url('/pelanggan') }}" class="menu-link">
@@ -240,13 +244,13 @@
                 </a>
             </li>
 
-            <!-- //absen -->
+            <!-- //absen
             <li class="menu-item">
                 <a href="{{ url('/absen') }}" class="menu-link">
                     <i class="menu-icon fas fa-box"></i>
                     <div data-i18n="Dashboards">Absen</div>
                 </a>
-            </li>
+            </li> -->
 
           
 

@@ -22,22 +22,20 @@
                             <h3>{{ $j->nama_jenis }}</h3>
                             <ul class="menu-item" style="cursor: pointer;">
                                 @foreach ($j->menu as $menu)
-                                <li data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">
-                                    <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
-                                    Nama : {{ $menu->nama_menu }}
-                                    <br>
-                                    Deskripsi : {{ $menu->deskripsi }}
-                                    <br>
-                                    Stok :
+                                <li @if($menu->stok->jumlah < 1) style="pointer-events: none; opacity: 0.8;" @endif data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">
+                                        <img width="50px" src="{{ asset('images') }}/{{ $menu->image }}" alt="">
+                                        Nama : {{ $menu->nama_menu }}
+                                        <br>
+                                        Deskripsi : {{ $menu->deskripsi }}
+                                        <br>    
+                                        Stok : {{$menu->stok->jumlah}}
                                 </li>
-
                                 @endforeach
                             </ul>
                         </li>
                         @endforeach
                     </ul>
                 </div>
-
             </div>
         </div>
         <div class="item content">

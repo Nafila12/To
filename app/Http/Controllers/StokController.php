@@ -16,7 +16,7 @@ class StokController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index()                                                                                    
     {
         $stok = stok::all();
         try {
