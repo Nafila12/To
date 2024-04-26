@@ -90,26 +90,14 @@ public function store(StoreStokRequest $request)
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStokRequest $request, Stok $stok)
+    public function update(UpdateStokRequest $request, string $id)
     {
-        try {
-            DB::beginTransaction();
-            $stok = Stok::findOrFail($stok);
-            $validate = $request->validated();
-            $stok->update($validate);
-            DB::commit();
-            return redirect()->back()->with('success', 'data berhasil di ubah');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors(['message' => 'terjadi kesalahan']);
-        }
+        $stok = stok::find($id)->update($request->all());
+        return redirect('stok')->with('success', 'data berhasil di ubah');
     }
-    public function destroy(stok $stok)
+    public function destroy( $id)
     {
-        try {
-            $stok->delete();
-            return redirect('/stok')->with('success', 'Data berhasil dihapus!');
-        } catch (QueryException | Exception | PDOException $error) {
-            $this->failResponse($error->getMessage(), $error->getCode());
-        }
+        stok::find($id)->delete();
+        return redirect('stok')->with('success', 'Data menu berhasil dihapus!');
     }
 }

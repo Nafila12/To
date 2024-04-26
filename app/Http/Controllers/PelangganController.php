@@ -6,6 +6,7 @@ use App\Exports\PelangganExport;
 use App\Models\pelanggan;
 use App\Http\Requests\StorepelangganRequest;
 use App\Http\Requests\UpdatepelangganRequest;
+use App\Imports\PelangganImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -95,4 +96,5 @@ class PelangganController extends Controller
         $pdf = Pdf::loadView('pelanggan.data', compact('pelanggan'));
         return $pdf->download('pelanggan.pdf');
     }
+   
 }

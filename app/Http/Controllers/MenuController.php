@@ -85,11 +85,12 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Menu $menu)
+    public function destroy( $id)
     {
-        $menu->delete();
+        // $menu->delete();
+        // return redirect('menu')->with('success', 'Data menu berhasil dihapus!');
+        Menu::find($id)->delete();
         return redirect('menu')->with('success', 'Data menu berhasil dihapus!');
-
     }
 
     public function exportData()

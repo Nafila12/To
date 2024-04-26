@@ -25,7 +25,7 @@
                     <div class="mb-3 row">
                         <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="jumlah" name='jumlah'>
+                            <input type="number" class="form-control" id="jumlah" name='jumlah'>
                         </div>
                     </div>
 

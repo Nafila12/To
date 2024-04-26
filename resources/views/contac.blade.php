@@ -98,7 +98,7 @@
         </div>
         <div>
             <h2>Foto Kantor:</h2>
-            <img src="Botani.jpg" alt="Foto Kantor" style="max-width: 100%;">
+            <img src="foto SMk.jpeg" alt="Foto Kantor" style="max-width: 100%;">
         </div>
         <div>
             <h2>Google Maps Lokasi Kantor:</h2>

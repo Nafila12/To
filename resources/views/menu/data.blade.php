@@ -14,7 +14,7 @@
     <tbody>
         @foreach ($menu as $p)
         <tr>
-            <th scope="row">{{ $i = !isset($i) ? 1 : ++$i }}</th>
+            <th scope="row">{{ $i = !isset($i) ? ($i=1) : ++$i }}</th>
             <td>{{ $p->jenis->nama_jenis}}</td>
             <td>{{ $p->nama_menu }}</td>
             <td>{{ $p->harga }}</td>

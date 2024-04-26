@@ -10,7 +10,7 @@
     <tbody>
         @foreach ($stok as $s)
         <tr>
-            <th scope="row">{{ $i = !isset($i) ? 1 : ++$i }}</th>
+            <th scope="row">{{ $i = !isset($i) ? ($i=1) : ++$i }}</th>
             <td>{{ $s->menu->nama_menu}}</td>
             <td>{{ $s->jumlah }}</td>
             <td>

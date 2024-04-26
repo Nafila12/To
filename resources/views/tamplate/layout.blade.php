@@ -142,7 +142,7 @@
             <!-- about -->
             <li class="menu-item">
                 <a href="{{ url('/about') }}" class="menu-link">
-                    <i class="menu-icon fas fa-trash"></i>
+                    <i class=" menu-icon fa-solid fa-mobile"></i>
                     <div data-i18n="Dashboards">About</div>
                 </a>
             </li>
@@ -159,40 +159,40 @@
             <!-- Menu -->
             <li class="menu-item">
                 <a href="{{ url('/menu') }}" class="menu-link">
-                    <i class="menu-icon fas fa-clipboard"></i>
+                    <i class="menu-icon fa-solid fa-bell-concierge"></i>
                     <div data-i18n="Dashboards">Menu</div>
                 </a>
 
                 <!-- stok -->
                 <li class="menu-item">
                     <a href="{{ url('/stok') }}" class="menu-link">
-                        <i class="menu-icon fas fa-box"></i>
+                        <i class="menu-icon fa-solid fa-boxes-stacked"></i>
                         <div data-i18n="Dashboards">Stok</div>
                     </a>
                 </li>
                 <!-- meja -->
              <li class="menu-item">
                 <a href="{{ url('/meja') }}" class="menu-link">
-                    <i class="menu-icon fas fa-clipboard"></i>
+                    <i class="menu-icon fa-solid fa-table"></i>
                     <div data-i18n="Dashboards">meja</div>
                 </a>
                 
                  <!-- kategorai -->
             <li class="menu-item">
                 <a href="{{ url('/kategory') }}" class="menu-link">
-                    <i class="menu-icon fas fa-trash"></i>
+                    <i class="menu-icon fa-solid fa-layer-group"></i>
                     <div data-i18n="Dashboards">kategory</div>
                 </a>
             </li>
 
             </li> 
-            <!-- produk titipan -->
+            <!-- produk titipan
             <li class="menu-item">
                 <a href="{{ url('produk_titipan') }}" class="menu-link">
                     <i class="menu-icon fas fa-box"></i>
                     <div data-i18n="Dashboards">Produk titipan</div>
                 </a>
-            </li>
+            </li> -->
 
             <!-- pelanggan -->
             <li class="menu-item">
@@ -232,14 +232,14 @@
             <!-- contact -->
             <li class="menu-item">
                 <a href="{{ url('/contac') }}" class="menu-link">
-                    <i class="menu-icon fas fa-trash"></i>
+                    <i class="menu-icon fa-solid fa-phone"></i>
                     <div data-i18n="Dashboards">Contact Us</div>
                 </a>
             </li>
             <!-- Logout -->
             <li class="menu-item">
                 <a href="{{ url('/logout') }}" class="menu-link">
-                    <i class="menu-icon fas fa-box"></i>
+                    <i class=" menu-icon fa-solid fa-power-off"></i>
                     <div data-i18n="Dashboards">Logout</div>
                 </a>
             </li>

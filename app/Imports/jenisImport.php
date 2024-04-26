@@ -23,5 +23,9 @@ class jenisImport implements ToCollection, WithHeadingRow
             ]);
         }
     }
+    public function headingRow()
+    {
+        return 3;
+    }
 
 }
