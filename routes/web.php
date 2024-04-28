@@ -13,6 +13,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\ProdukTitipanController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
@@ -62,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('jenis', JenisController::class);
         Route::post('jenis/import', [JenisController::class, 'importData'])->name('import-jenis');
         Route::resource('menu', MenuController::class);
+        Route::resource('register', RegisterController::class);
         Route::resource('meja', MejaController::class);
         Route::resource('stok', StokController::class);
         Route::resource('absen', AbsenController::class);

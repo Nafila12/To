@@ -184,25 +184,32 @@
                     <div data-i18n="Dashboards">kategory</div>
                 </a>
             </li>
-
-            </li> 
-            <!-- produk titipan
-            <li class="menu-item">
-                <a href="{{ url('produk_titipan') }}" class="menu-link">
-                    <i class="menu-icon fas fa-box"></i>
-                    <div data-i18n="Dashboards">Produk titipan</div>
-                </a>
-            </li> -->
-
-            <!-- pelanggan -->
-            <li class="menu-item">
-                <a href="{{ url('/pelanggan') }}" class="menu-link">
-                    <i class="menu-icon fas fa-person"></i>
-                    <div data-i18n="Dashboards">Pelanggan</div>
-                </a>
+            
+        </li> 
+    </li>
+    <!-- produk titipan
+    <li class="menu-item">
+        <a href="{{ url('produk_titipan') }}" class="menu-link">
+            <i class="menu-icon fas fa-box"></i>
+            <div data-i18n="Dashboards">Produk titipan</div>
+        </a>
+    </li> -->
+    
+    <!-- pelanggan -->
+    <li class="menu-item">
+        <a href="{{ url('/pelanggan') }}" class="menu-link">
+            <i class="menu-icon fas fa-person"></i>
+            <div data-i18n="Dashboards">Pelanggan</div>
+        </a>
+        <!-- User manager -->
+    <li class="menu-item">
+       <a href="{{ url('/register') }}" class="menu-link">
+           <i class="menu-icon fa-solid fa-user"></i>
+           <div data-i18n="Dashboards">User Mager</div>
+       </a>
             </li>
             @endif
-
+            
             @if (Auth::user()->level==2)
             <!-- pemesanan -->
             <li class="menu-item">
