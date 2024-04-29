@@ -27,10 +27,16 @@
                 </ul>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            
             @endif
             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFormTransaksi">
                 Tambah Transaksi
             </button> -->
+
+            
+            <a href="{{ route('pem') }}" class="btn btn-danger">
+                    <i class="fas fa-file-pdf"></i> Export PDF
+                </a>
             <!-- Button trigger modal -->
             <div class="mt-3 p-4">
                 @include('transaksi.data')
@@ -47,6 +53,7 @@
 
 @push('scripts')
 <script>
+     $('#tbl-transaksi').DataTable()
     $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
         $('.alert-success').slideUp(500)
     })

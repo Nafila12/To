@@ -1,3 +1,6 @@
+
+
+
 <html lang="en" class="light-style layout-menu-fixed layout-compact " dir="ltr" data-theme="theme-default" data-assets-path="{{ asset('admin') }}/assets/" data-template="vertical-menu-template-free">
 
 <head>
@@ -11,6 +14,10 @@
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/item/sneat-bootstrap-html-admin-template/">
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/datatables.css">
+    <link rel="stylesheet"
+        href="{{ asset('mazer') }}/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+
 
 
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
@@ -132,22 +139,21 @@
 
             <!-- home -->
             @if (Auth::user()->level==1)
-            <li class="menu-item">
+            <!-- <li class="menu-item">
                 <a href="{{ url('/') }}" class="menu-link">
+                    <i class="menu-icon fas fa-house"></i>
+                    <div data-i18n="Dashboards">Home</div>
+                </a>
+            </li> -->
+            <li class="menu-item">
+                <a href="{{ url('/grafik') }}" class="menu-link">
                     <i class="menu-icon fas fa-house"></i>
                     <div data-i18n="Dashboards">Home</div>
                 </a>
             </li>
 
-            <!-- about -->
-            <li class="menu-item">
-                <a href="{{ url('/about') }}" class="menu-link">
-                    <i class=" menu-icon fa-solid fa-mobile"></i>
-                    <div data-i18n="Dashboards">About</div>
-                </a>
-            </li>
-           
-
+            
+            
             <!-- jenis -->
             <li class="menu-item">
                 <a href="{{ url('/jenis') }}" class="menu-link">
@@ -171,42 +177,50 @@
                     </a>
                 </li>
                 <!-- meja -->
-             <li class="menu-item">
+             <!-- <li class="menu-item">
                 <a href="{{ url('/meja') }}" class="menu-link">
                     <i class="menu-icon fa-solid fa-table"></i>
                     <div data-i18n="Dashboards">meja</div>
-                </a>
+                </a> -->
                 
-                 <!-- kategorai -->
-            <li class="menu-item">
-                <a href="{{ url('/kategory') }}" class="menu-link">
-                    <i class="menu-icon fa-solid fa-layer-group"></i>
-                    <div data-i18n="Dashboards">kategory</div>
+                <!-- kategorai
+                <li class="menu-item">
+                    <a href="{{ url('/kategory') }}" class="menu-link">
+                        <i class="menu-icon fa-solid fa-layer-group"></i>
+                        <div data-i18n="Dashboards">kategory</div>
+                    </a>
+                </li> -->
+                
+            </li> 
+        </li>
+        <!-- produk titipan
+        <li class="menu-item">
+            <a href="{{ url('produk_titipan') }}" class="menu-link">
+                <i class="menu-icon fas fa-box"></i>
+                <div data-i18n="Dashboards">Produk titipan</div>
+            </a>
+        </li> -->
+        
+        <!-- pelanggan -->
+        <li class="menu-item">
+            <a href="{{ url('/pelanggan') }}" class="menu-link">
+                <i class="menu-icon fas fa-person"></i>
+                <div data-i18n="Dashboards">Pelanggan</div>
+            </a>
+
+             <!-- transaksi
+             <li class="menu-item">
+                <a href="{{ url('/transaksi') }}" class="menu-link">
+                    <i class="menu-icon fas fa-dollar-sign"></i>
+                    <div data-i18n="Dashboards">Transaksi</div>
                 </a>
-            </li>
-            
-        </li> 
-    </li>
-    <!-- produk titipan
-    <li class="menu-item">
-        <a href="{{ url('produk_titipan') }}" class="menu-link">
-            <i class="menu-icon fas fa-box"></i>
-            <div data-i18n="Dashboards">Produk titipan</div>
-        </a>
-    </li> -->
-    
-    <!-- pelanggan -->
-    <li class="menu-item">
-        <a href="{{ url('/pelanggan') }}" class="menu-link">
-            <i class="menu-icon fas fa-person"></i>
-            <div data-i18n="Dashboards">Pelanggan</div>
-        </a>
-        <!-- User manager -->
-    <li class="menu-item">
-       <a href="{{ url('/register') }}" class="menu-link">
-           <i class="menu-icon fa-solid fa-user"></i>
-           <div data-i18n="Dashboards">User Mager</div>
-       </a>
+            </li> -->
+            <!-- User manager
+            <li class="menu-item">
+                <a href="{{ url('/register') }}" class="menu-link">
+                    <i class="menu-icon fa-solid fa-us er"></i>
+                    <div data-i18n="Dashboards">User Mager</div>
+                </a> -->
             </li>
             @endif
             
@@ -218,14 +232,14 @@
                     <div data-i18n="Dashboards">Home</div>
                 </a>
             </li>
-
+            
             <li class="menu-item">
                 <a href="{{ url('/pemesanan') }}" class="menu-link">
                     <i class="menu-icon fas fa-cart-shopping"></i>
                     <div data-i18n="Dashboards">Pemesanan</div>
                 </a>
             </li>
-
+            
             <!-- transaksi -->
             <li class="menu-item">
                 <a href="{{ url('/transaksi') }}" class="menu-link">
@@ -233,9 +247,16 @@
                     <div data-i18n="Dashboards">Transaksi</div>
                 </a>
             </li>
-
-
+            
+            
             @endif
+            <!-- about -->
+            <li class="menu-item">
+                <a href="{{ url('/about') }}" class="menu-link">
+                    <i class=" menu-icon fa-solid fa-mobile"></i>
+                    <div data-i18n="Dashboards">About</div>
+                </a>
+            </li>
             <!-- contact -->
             <li class="menu-item">
                 <a href="{{ url('/contac') }}" class="menu-link">

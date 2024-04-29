@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\ContacUsController;
+use App\Http\Controllers\diagramController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisController;
@@ -45,6 +46,7 @@ Route::get('export/absen', [AbsenController::class, 'exportData'])->name('xl-abs
 //pdf
 Route::get('generate/kategori', [KategoryController::class, 'generatepdf'])->name('tilek');
 Route::get('generate/jenis', [JenisController::class, 'generatepdf'])->name('dino');
+Route::get('generate/transaksi', [TransaksiController::class, 'generatepdf'])->name('pem');
 Route::get('generate/menu', [MenuController::class, 'generatepdf'])->name('aku');
 Route::get('generate/pelanggan', [PelangganController::class, 'generatepdf'])->name('ss');
 Route::get('generate/produk_titipan', [ProdukTitipanController::class, 'generatepdf'])->name('xl-pdf');
@@ -58,6 +60,7 @@ Route::post('meja/import', [MejaController::class, 'importData'])->name('import-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
+    Route::resource('grafik',diagramController::class);
 
     Route::group(['middleware' => ['cekUserLogin:1']], function () {
         Route::resource('jenis', JenisController::class);

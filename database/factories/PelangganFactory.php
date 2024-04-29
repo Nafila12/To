@@ -14,10 +14,13 @@ class PelangganFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
-        ];
-    }
+            'nama' => $this->faker->name(),
+            'email' => $this->faker->email(),
+            'nomor_telepon' => $this->faker->phoneNumber(),
+            'alamat' => $this->faker->address(),
+];
+}
 }

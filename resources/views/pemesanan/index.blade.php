@@ -20,7 +20,7 @@
                         @foreach ($jenis as $j)
                         <li>
                             <h3>{{ $j->nama_jenis }}</h3>
-                            <ul class="menu-item" style="cursor: pointer;">
+                            <ul class="menu-item" style="cursor: pointer; overflow:auto;">
                                 @foreach ($j->menu as $menu)
                                 <li @if($menu->stok->jumlah < 1) style="pointer-events: none; opacity: 0.8;" @endif 
                                 data-harga="{{ $menu->harga }}" data-id="{{ $menu->id }}" data-image="{{ $menu->image }}">

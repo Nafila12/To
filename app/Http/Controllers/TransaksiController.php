@@ -6,6 +6,7 @@ use App\Models\Transaksi;
 use App\Http\Requests\TransaksiRequest;
 use App\Models\DetailTransaksi;
 use App\Models\stok;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -128,4 +129,12 @@ class TransaksiController extends Controller
     {
         //
     }
+
+    public function generatepdf()
+    {
+        $transaksi =Transaksi::all();
+        $pdf = Pdf::loadView('transaksi.data', compact('transaksi'));
+        return $pdf->download('transaksi.pdf');
+    }
+   
 }

@@ -85,7 +85,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: uppercase;">S A P I</span>
+                                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: uppercase;">S A P I  SPY</span>
                             </a>
                         </div>
 

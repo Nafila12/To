@@ -125,5 +125,6 @@
     .table-bordered th {
         background-color: #343a40;
         color: #fff;
+        
     }
 </style>
