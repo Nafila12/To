@@ -85,7 +85,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: uppercase;">S A P I  SPY</span>
+                                <span class="app-brand-text demo text-body fw-bolder" style="text-transform: uppercase;">S A P I SPY</span>
                             </a>
                         </div>
 
@@ -94,7 +94,7 @@
                             <div id="method"></div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Enter Your Email</label>
-                                <input type="email" class="form-control" @error('email') is-invalid @enderror placeholder="Email" name="email" id="email" value="{{ old('email') }}" id="first-name-icon">
+                                <input type="email" class="form-control" @error('email') is-invalid @enderror placeholder="Email" name="email" id="email" value="" id="first-name-icon">
                             </div>
                             @error('email')
                             <div class="invalid-feedback">
@@ -107,7 +107,7 @@
                                     <label class="form-label" for="password">Password</label>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" class="form-control" @error('password') is-invalid @enderror placeholder="Password" name="password" value="{{ old('password') }}" />
+                                    <input type="password" class="form-control" @error('password') is-invalid @enderror placeholder="Password" name="password" value="" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                                 @error('password')

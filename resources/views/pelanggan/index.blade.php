@@ -57,61 +57,64 @@
 
 @push('scripts')
 <script>
-    $('#tbl-pelanggan').DataTable()
-    $('.alert-success').fadeTo(2000, 500).slideUp(500, function() {
-        $('.alert-success').slideUp(500)
-    })
-    $('.alert-danger').fadeTo(2000, 500).slideUp(500, function() {
-        $('.alert-danger').slideUp(500)
-    })
-    console.log($('.btn-danger'))
-    $('.delete-data').on('click', function(e) {
-        console.log(e)
-        e.preventDefault()
-        const data = $(this).closest('tr').find('td:eq(1)').text()
-        Swal.fire({
-            title: `Apakah data <span style="color:red">${data}</span> akan dihapus?`,
-            text: "Data tidak bisa dikembalikan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus data ini!'
-        }).then((result) => {
-            if (result.isConfirmed)
-                $(e.target).closest('form').submit()
-            else swal.close()
-        })
-    })
-    $('#modalFormPelanggan').on('show.bs.modal', function(e) {
-        const btn = $(e.relatedTarget)
-        console.log(btn.data('mode'))
-        const mode = btn.data('mode')
-        const nama = btn.data('nama')
-        const email = btn.data('email')
-        const nomor_telepon = btn.data('nomor_telepon')
-        const alamat = btn.data('alamat')
+    $(document).ready(function() {
+        $('#tbl-pelanggan').DataTable();
+        
+        // Fade out success and error alerts after 2 seconds
+        $('.alert-success').delay(2000).fadeOut(500);
+        $('.alert-danger').delay(2000).fadeOut(500);
 
-        const id = btn.data('id')
-        const modal = $(this)
-        console.log($(this))
-        if (mode === 'edit') {
-            modal.find('.modal-title').text('Edit Data Pelanggan')
-            modal.find('#nama').val(nama)
-            modal.find('#email').val(email)
-            modal.find('#nomor_telepon').val(nomor_telepon)
-            modal.find('#alamat').val(alamat)
-            modal.find('form').attr('action', '{{ url("pelanggan") }}/' + id)
-            modal.find('#method').html('@method("PATCH")')
-        } else {
-            modal.find('.modal-title').text('Input Data Pelanggan')
-            modal.find('#nama').val('')
-            modal.find('#email').val('')
-            modal.find('#nomor_telepon').val('')
-            modal.find('#alamat').val('')
-            modal.find('#method').html('')
-            modal.find('form').attr('action', '{{ url("pelanggan") }}')
-        }
-    })
+        // Delete data confirmation using SweetAlert
+        $('.delete-data').on('click', function(e) {
+            e.preventDefault();
+            const nama = $(this).data('nama');
+            const form = $(this).closest('form');
+            Swal.fire({
+                title: `Apakah Anda yakin ingin menghapus ${nama}?`,
+                text: "Data tidak bisa dikembalikan setelah dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+
+        // Populate form data in modal for editing
+        $('#modalFormPelanggan').on('show.bs.modal', function(e) {
+            const btn = $(e.relatedTarget);
+            const mode = btn.data('mode');
+            const modal = $(this);
+            const id = btn.data('id');
+            const nama = btn.data('nama');
+            const email = btn.data('email');
+            const nomor_telepon = btn.data('nomor_telepon');
+            const alamat = btn.data('alamat');
+
+            if (mode === 'edit') {
+                modal.find('.modal-title').text('Edit Data Pelanggan');
+                modal.find('#nama').val(nama);
+                modal.find('#email').val(email);
+                modal.find('#nomor_telepon').val(nomor_telepon);
+                modal.find('#alamat').val(alamat);
+                modal.find('form').attr('action', `{{ url("pelanggan") }}/${id}`);
+                modal.find('#method').html('@method("PATCH")');
+            } else {
+                modal.find('.modal-title').text('Input Data Pelanggan');
+                modal.find('#nama').val('');
+                modal.find('#email').val('');
+                modal.find('#nomor_telepon').val('');
+                modal.find('#alamat').val('');
+                modal.find('#method').html('');
+                modal.find('form').attr('action', `{{ url("pelanggan") }}`);
+            }
+        });
+    });
 </script>
+
 @endpush

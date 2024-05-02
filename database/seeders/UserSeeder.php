@@ -26,12 +26,12 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('k4s1r2024'),
                 'level' => 2
             ],
-            [
-                'name' => 'owner',
-                'email' => 'owner@gmail.com',
-                'password' => bcrypt('a'),
-                'level' => 3
-            ],
+            // [
+            //     'name' => 'owner',
+            //     'email' => 'owner@gmail.com',
+            //     'password' => bcrypt('a'),
+            //     'level' => 3
+            // ],
         ];
         foreach ($user as $key => $value) {
             User::create($value);

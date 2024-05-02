@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\ContacUsController;
+use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\diagramController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -62,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'home']);
     Route::resource('grafik',diagramController::class);
 
+
     Route::group(['middleware' => ['cekUserLogin:1']], function () {
         Route::resource('jenis', JenisController::class);
         Route::post('jenis/import', [JenisController::class, 'importData'])->name('import-jenis');
@@ -78,8 +80,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => ['cekUserLogin:2']], function () {
+        Route::resource('/laporan', DetailTransaksiController::class);
         Route::resource('transaksi', TransaksiController::class);
         Route::resource('pemesanan', PemesananController::class);
         Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);
     });
+
 });

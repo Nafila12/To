@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\DetailTransaksi;
 use App\Http\Requests\StoreDetailTransaksiRequest;
 use App\Http\Requests\UpdateDetailTransaksiRequest;
+use App\Models\Transaksi;
+use Exception;
+use Illuminate\Database\QueryException;
+use PDOException;
 
 class DetailTransaksiController extends Controller
 {
@@ -13,7 +17,8 @@ class DetailTransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $data['transaksi'] = Transaksi::get();
+        return view('transaksi.index')->with($data);
     }
 
     /**

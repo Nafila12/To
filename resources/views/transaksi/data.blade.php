@@ -1,62 +1,32 @@
-<table class="mt-2 table table-sm table-hover table-striped table-bordered" id="tbl-transaksi">
+<table class="table table-compact table-striped" id="tbl-laporan">
     <thead>
         <tr>
-            <th scope="col">No</th>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Total Harga</th>
-            <th scope="col">Metode Pembayaran</th>
+            <th>No</th>
+            <th>Id Transaksi</th>
+            <th>Detail Transaksi</th>
+            <th>Total Harga</th>
         </tr>
     </thead>
     <tbody>
-        @php $i = 1 @endphp <!-- Inisialisasi variabel nomor baris -->
-        @foreach ($transaksi as $t)
+        @foreach ($transaksi as $item)
         <tr>
-            <th scope="row">{{ $i++ }}</th> <!-- Penambahan nomor baris -->
-            <td>{{ $t->tanggal }}</td>
-            <td>{{ $t->total_harga }}</td>
-            <td>{{ $t->metode_pembayaran }}</td>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $item->id }}</td>
+            <td>
+                @foreach($item->detailTransaksi as $detail)
+                @if ($detail->menu)
+                <p>Nama: {{ $detail->menu->nama_menu }}</p>
+                <p>Qty: {{ $detail->jumlah }}</p>
+                <p>Subtotal: {{ $detail->subtotal }}</p>
+                <hr>
+                @else
+               
+                @endif
+                @endforeach
+
+            </td>
+            <td>{{ $item->total_harga }}</td>
         </tr>
         @endforeach
     </tbody>
 </table>
-
-<style>
-    /* Gaya untuk tabel */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #ddd;
-        font-family: Arial, sans-serif;
-        margin-top: 20px;
-    }
-
-    th,
-    td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 2px solid #ddd;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        color: #333;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    /* Gaya untuk baris ganjil */
-    tr:nth-child(odd) {
-        background-color: #f9f9f9;
-    }
-
-    /* Gaya untuk baris saat diklik/hover */
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-</style>
-
-
-<!-- Letakkan skrip JavaScript di bagian bawah -->
-<script>
-
-</script>

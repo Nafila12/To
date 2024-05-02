@@ -46,7 +46,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"   />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -232,29 +232,16 @@
                     <div data-i18n="Dashboards">Home</div>
                 </a>
             </li>
-            
             <li class="menu-item">
-                <a href="{{ url('/pemesanan') }}" class="menu-link">
-                    <i class="menu-icon fas fa-cart-shopping"></i>
-                    <div data-i18n="Dashboards">Pemesanan</div>
+                <a href="{{ url('pemesanan') }}" class="menu-link">
+                    <i class="menu-icon fa-solid fa-money-bill"></i>
+                    <div data-i18n="Dashboards">pemesanan</div>
                 </a>
             </li>
-            
-            <!-- transaksi -->
             <li class="menu-item">
-                <a href="{{ url('/transaksi') }}" class="menu-link">
-                    <i class="menu-icon fas fa-dollar-sign"></i>
-                    <div data-i18n="Dashboards">Transaksi</div>
-                </a>
-            </li>
-            
-            
-            @endif
-            <!-- about -->
-            <li class="menu-item">
-                <a href="{{ url('/about') }}" class="menu-link">
-                    <i class=" menu-icon fa-solid fa-mobile"></i>
-                    <div data-i18n="Dashboards">About</div>
+                <a href="{{ url('/laporan') }}" class="menu-link">
+                    <i class="menu-icon fas fa-book"></i>
+                    <div data-i18n="Dashboards">Laporan</div>
                 </a>
             </li>
             <!-- contact -->
@@ -264,6 +251,7 @@
                     <div data-i18n="Dashboards">Contact Us</div>
                 </a>
             </li>
+            @endif
             <!-- Logout -->
             <li class="menu-item">
                 <a href="{{ url('/logout') }}" class="menu-link">

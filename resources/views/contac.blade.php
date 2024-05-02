@@ -94,7 +94,7 @@
         <h1>Contact Us</h1>
         <div>
             <h2>Alamat Lengkap:</h2>
-            <p>Jl. Gatot Mangkupradja Km 4 kp. Panumbangan Ds. Cibulakan</p>
+            <p>Jl. Siliwangi No.41, Sawah Gede, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43212</p>
         </div>
         <div>
             <h2>Foto Kantor:</h2>
@@ -127,21 +127,7 @@
 
             <body>
                 <div class="container">
-                    <h2>Hubungi Developer</h2>
-                    <form action="submit_form.php" method="POST">
-                        <!-- Ganti submit_form.php dengan file yang menangani form -->
-
-                        <label for="name">Nama:</label><br>
-                        <input type="text" id="name" name="name" required><br>
-
-                        <label for="email">Email:</label><br>
-                        <input type="email" id="email" name="email" required><br>
-
-                        <label for="message">Pesan:</label><br>
-                        <textarea id="message" name="message" rows="4" required></textarea><br>
-
-                        <button type="submit">Kirim</button>
-                    </form>
+                Telepon: (0263) 261265
                 </div>
             </body>
 
